@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Controllerbasiertes WLAN @home </title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h3>Controllerbasiertes  WLAN @home</h3>
+					<p><small>oder: Was tun, wenn das FritzBox WLAN nicht ausreicht</small></p>
+					<p><small>Sebastian Jürges - IT IS BSN</small></p>
+				</section>
+
+				<section>
+					<h3>Über mich </h3>
+					<p>Senior Network Engineer bei IT IS BSN</p>
+					<p>seit 2010 bei der BDr</p>
+				</section>
+
+				<section>
+					<h3>Warum WLAN @home</h3>
+					<p class="fragment">BDr Netz hochspannend, aber ...</p>
+					<p class="fragment">es ist vieles klassifiziert</p>
+					<p class="fragment">ich will den Raum nicht ins Koma versetzen</p>
+					<h3 class="fragment">Desweiteren:</h3>
+					<p class="fragment">WLAN die am meisten gestellte Frage</p>
+					<p class="fragment">kompliziert, und doch so leicht</p>
+				</section>
+
+				<section>
+					<h3>WLAN Basics</h3>
+					<p class="fragment">besteht aus einem oder mehreren Access Points (APs)</p>
+					<p class="fragment">zumeist nur ein AP, im Provider Router integriert </p>
+					<p class="fragment">z.B: Fritz!Box oder Speedport</p>
+					<p class="fragment">begrenzte Reichweite</p>
+					<p class="fragment">begrenzte Bandbreite</p>
+					<p class="fragment">geteilter Frequenzbereich</p>
+				</section>
+
+				<section>
+					<h3>WLAN Basics</h3>
+					<p class="fragment">2 Frequenzbänder: 2,4 & 5 GHz</p>
+					<p class="fragment">2,4 GHz höhere Reichweite</p>
+					<p class="fragment">5,0 GHz höhere Bandbreite</p>
+					<p class="fragment">Mehrere Protokollversionen (z.B. a,b,g,n,ac)</p>
+					<p class="fragment">Heute noch relevant (g,n,ac)</p>
+					<p class="fragment"><small><a href="https://en.wikipedia.org/wiki/IEEE_802.11#Protocol"> Quelle </a></small></p>
+				</section>
+
+				<section>
+					<h3>Controllerbasiertes- vs. Standalone-WLAN</h3>
+				</section>
+
+				<section>
+					<h3>Was ist Standalone</h3>
+					<p class="fragment">Ein "richtiger" AP</p>
+					<p class="fragment">Ansonsten Repeater</p>
+					<p class="fragment">Teilen sich Einstellungen (Kanal/Frequenz usw.)</p>
+				</section>
+
+				<section>
+					<h3>Einschränkungen Standalone</h3>
+					<p class="fragment highlight-red">Funktionert nur wenn sich AP und Repeater im Funk (OTA) mit guter Qualität sehen</p>
+					<p class="fragment highlight-red">Kein Roaming (wandern zwischen von unterschiedlichen Geräten mit Funk versorgten Bereichen)</p>
+					<p class="fragment highlight-red">reduzierte Bandbreite, denn: </p>
+					<p class="fragment highlight-red">Mehrfache Übertragung (Client->Repeater->AP)</p>
+				</section>
+
+				<section>
+					<h3>Was ist Controllerbasiert</h3>
+					<p class="fragment">unabhängige APs</p>
+					<p class="fragment">Von einer Zentralen Komponente (Controller) gesteuert</p>
+					<p class="fragment">APs kennen Frequenzbereiche der anderen APs, können unterschiedlich konfiguriert sein</p>
+				</section>
+
+				<section>
+					<h3>Vorteile Controllerbasiert</h3>
+					<p class="fragment highlight-green">Roaming zwischen APs</p>
+					<p class="fragment highlight-green">Volle Bandbreite</p>
+					<p class="fragment highlight-green">Getrennte Frequenzkanäle möglich</p>
+				</section>
+
+				<section>
+					<h3>Vorbedingung Controllerbasiert</h3>
+					<p class="fragment">Netzwerkkabel am AP Aufstellort</p>
+					<p class="fragment">- ODER -</p>
+					<p class="fragment">Controller-Mesh</p>
+				</section>
+
+				<section>
+					<h3>Beispielproblem</h3>
+					<img src="img/grundriss.png" class="stretch">
+				</section>
+
+				<section>
+					<h3>Beispiellösung APs</h3>
+					<img src="img/heatmap2ghz.png" class="stretch">
+				</section>
+
+				<section>
+					<h3>Lösungskomponenten (Kabel vorhanden)</h3>
+					<p class="fragment">Controller</p>
+					<p class="fragment"><small><a href="https://www.ubnt.com/unifi/unifi-cloud-key/">Ubiquiti UniFi Cloud Key</a></small></p>
+					<p class="fragment">2 APs</p>
+					<p class="fragment"><small><a href="https://www.ubnt.com/unifi/unifi-ap-ac-lite/">Ubiquiti UniFi AP AC Lite</a></small></p>
+					<p class="fragment">~ 230€ (gesamt)</p>
+				</section>
+
+				<section>
+					<h3>Beispiellösung Mesh</h3>
+					<img src="img/heatmapmesh.png" class="stretch">
+				</section>
+
+				<section>
+					<h3>Lösungskomponenten (Keine Kabel)</h3>
+					<p class="fragment">Controller</p>
+					<p class="fragment"><small><a href="https://www.ubnt.com/unifi/unifi-cloud-key/">Ubiquiti UniFi Cloud Key</a></small></p>
+					<p class="fragment">3 Mesh APs</p>
+					<p class="fragment"><small><a href="https://unifi-mesh.ubnt.com/">Ubiquiti UniFi AP AC Mesh</a></small></p>
+					<p class="fragment">~ 350€ (gesamt)</p>
+				</section>
+
+				<section>
+					<h3>Allgemeines zu APs</h3>
+					<p class="fragment">Zumeist Strom über Lankabel (PoE)</p>
+					<p class="fragment">Fast niemand hat sowas zuhause</p>
+					<p class="fragment">Daher: UniFi liefert Injectoren mit</p>
+					<img src="img/poeinjector.jpg" class="stretch">
+				</section>
+
+				<section>
+					<h3>Vielen Dank für die Aufmerksamkeit</h3>
+					<p>Fragen ?</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
